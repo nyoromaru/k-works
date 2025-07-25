@@ -1,3 +1,6 @@
+# Claude CLI settings
+.claude/
+
 # Windows
 Thumbs.db
 Desktop.ini
