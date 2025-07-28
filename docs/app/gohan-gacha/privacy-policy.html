@@ -10,70 +10,159 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Color+Emoji&display=swap" rel="stylesheet">
     <style>
+        body {
+            background-color: #fdfdf5;
+            color: #333;
+        }
         .policy-content {
             max-width: 800px;
             margin: 0 auto;
             padding: 2rem;
-            line-height: 1.8;
+            line-height: 1.9;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            margin-top: 2rem;
+            margin-bottom: 3rem;
         }
         .policy-content h1 {
-            color: #2d3748;
-            border-bottom: 3px solid #4299e1;
-            padding-bottom: 1rem;
+            color: #ff6b35;
+            font-size: 2.2rem;
+            font-weight: 700;
             margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+        .policy-content h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b35, #ffd700);
+            border-radius: 2px;
         }
         .policy-content h2 {
-            color: #2d3748;
-            margin-top: 2.5rem;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
+            color: #ff6b35;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 600;
+            padding-left: 1rem;
+            border-left: 4px solid #ffd700;
+            background: linear-gradient(to right, rgba(255, 215, 0, 0.1), transparent);
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
         }
         .policy-content h3 {
-            color: #4a5568;
+            color: #ff8c42;
             margin-top: 2rem;
-            margin-bottom: 0.5rem;
-            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            font-weight: 600;
         }
         .policy-content p, .policy-content li {
-            color: #4a5568;
+            color: #555;
             margin-bottom: 1rem;
+            font-size: 1.05rem;
         }
         .policy-content ul {
             margin-left: 1.5rem;
             margin-bottom: 1.5rem;
+            list-style: none;
+            padding-left: 0;
         }
         .policy-content li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        .policy-content li::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #ff6b35;
+            font-weight: bold;
         }
         .policy-content strong {
-            color: #2d3748;
+            color: #ff6b35;
+            font-weight: 600;
         }
         .policy-content a {
-            color: #4299e1;
-            text-decoration: none;
-        }
-        .policy-content a:hover {
-            text-decoration: underline;
-        }
-        .policy-meta {
-            background: #f7fafc;
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-            border-left: 4px solid #4299e1;
-        }
-        .back-link {
-            display: inline-block;
-            margin-bottom: 2rem;
-            color: #4299e1;
+            color: #ff6b35;
             text-decoration: none;
             font-weight: 500;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+        .policy-content a:hover {
+            border-bottom-color: #ff6b35;
+        }
+        .policy-meta {
+            background: linear-gradient(135deg, #fff8f0 0%, #fffbf0 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2.5rem;
+            border: 2px solid #ffd700;
+            box-shadow: 0 4px 12px rgba(255, 215, 0, 0.2);
+        }
+        .policy-meta p {
+            margin-bottom: 0.5rem;
+            color: #666;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 2.5rem;
+            color: #ff6b35;
+            background: white;
+            border: 3px solid #ff6b35;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(255, 107, 53, 0.2);
+            transition: all 0.3s ease;
+            line-height: 1;
+            box-sizing: border-box;
         }
         .back-link:hover {
-            text-decoration: underline;
+            color: white;
+            background: linear-gradient(135deg, #ff6b35, #ff8c42);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(255, 107, 53, 0.4);
         }
         .back-link::before {
             content: "← ";
+        }
+        /* セクション区切り */
+        .policy-content > h2:not(:first-of-type) {
+            margin-top: 4rem;
+        }
+        /* 重要情報の強調 */
+        .highlight-box {
+            background: #fffbf0;
+            border: 2px solid #ffd700;
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+        /* スクロールバー */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ff6b35;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ff8c42;
         }
     </style>
 </head>
@@ -119,7 +208,7 @@
         <ul>
             <li><strong>AdMob</strong>: Google AdMobを通じて収集される広告ID、IPアドレス、デバイス情報</li>
             <li><strong>バナー広告</strong>: メイン画面での広告表示データ</li>
-            <li><strong>リワード広告</strong>: 広告視聴回数、獲得したチケット数（30枚/回）</li>
+            <li><strong>リワード広告</strong>: 広告視聴回数、獲得したチケット数</li>
         </ul>
 
         <h3>1.3 SNS共有時の情報</h3>
@@ -131,11 +220,11 @@
 
         <h3>2.1 サービス提供のため</h3>
         <ul>
-            <li>ガチャシステムの提供（87種類の料理、4段階レアリティ）</li>
+            <li>ガチャシステムの提供</li>
             <li>ゲームの進行状況の保存・復元</li>
             <li>レベル・経験値システムの管理</li>
-            <li>実績システム（18種類の実績）の進捗管理</li>
-            <li>ガチャチケットシステムの管理（20分間隔での自動回復）</li>
+            <li>実績システムの進捗管理</li>
+            <li>ガチャチケットシステムの管理</li>
             <li>カスタマーサポート</li>
         </ul>
 

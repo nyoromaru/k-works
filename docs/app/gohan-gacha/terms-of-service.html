@@ -10,70 +10,180 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Color+Emoji&display=swap" rel="stylesheet">
     <style>
+        body {
+            background-color: #fdfdf5;
+            color: #333;
+        }
         .policy-content {
             max-width: 800px;
             margin: 0 auto;
             padding: 2rem;
-            line-height: 1.8;
+            line-height: 1.9;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            margin-top: 2rem;
+            margin-bottom: 3rem;
         }
         .policy-content h1 {
-            color: #2d3748;
-            border-bottom: 3px solid #4299e1;
-            padding-bottom: 1rem;
+            color: #ff6b35;
+            font-size: 2.2rem;
+            font-weight: 700;
             margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+        .policy-content h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b35, #ffd700);
+            border-radius: 2px;
         }
         .policy-content h2 {
-            color: #2d3748;
-            margin-top: 2.5rem;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
+            color: #ff6b35;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 600;
+            padding-left: 1rem;
+            border-left: 4px solid #ffd700;
+            background: linear-gradient(to right, rgba(255, 215, 0, 0.1), transparent);
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
         }
         .policy-content h3 {
-            color: #4a5568;
+            color: #ff8c42;
             margin-top: 2rem;
-            margin-bottom: 0.5rem;
-            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            font-weight: 600;
         }
         .policy-content p, .policy-content li {
-            color: #4a5568;
+            color: #555;
             margin-bottom: 1rem;
+            font-size: 1.05rem;
         }
-        .policy-content ul, .policy-content ol {
+        .policy-content ul {
             margin-left: 1.5rem;
             margin-bottom: 1.5rem;
+            list-style: none;
+            padding-left: 0;
         }
-        .policy-content li {
-            margin-bottom: 0.5rem;
+        .policy-content ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            counter-reset: item;
+            list-style: none;
+            padding-left: 0;
+        }
+        .policy-content ul li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        .policy-content ul li::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #ff6b35;
+            font-weight: bold;
+        }
+        .policy-content ol li {
+            margin-bottom: 0.8rem;
+            padding-left: 2rem;
+            position: relative;
+            counter-increment: item;
+        }
+        .policy-content ol li::before {
+            content: counter(item) ".";
+            position: absolute;
+            left: 0;
+            color: #ff6b35;
+            font-weight: bold;
+            font-size: 1.1rem;
         }
         .policy-content strong {
-            color: #2d3748;
+            color: #ff6b35;
+            font-weight: 600;
         }
         .policy-content a {
-            color: #4299e1;
-            text-decoration: none;
-        }
-        .policy-content a:hover {
-            text-decoration: underline;
-        }
-        .policy-meta {
-            background: #f7fafc;
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-            border-left: 4px solid #4299e1;
-        }
-        .back-link {
-            display: inline-block;
-            margin-bottom: 2rem;
-            color: #4299e1;
+            color: #ff6b35;
             text-decoration: none;
             font-weight: 500;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+        .policy-content a:hover {
+            border-bottom-color: #ff6b35;
+        }
+        .policy-meta {
+            background: linear-gradient(135deg, #fff8f0 0%, #fffbf0 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2.5rem;
+            border: 2px solid #ffd700;
+            box-shadow: 0 4px 12px rgba(255, 215, 0, 0.2);
+        }
+        .policy-meta p {
+            margin-bottom: 0.5rem;
+            color: #666;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 2.5rem;
+            color: #ff6b35;
+            background: white;
+            border: 3px solid #ff6b35;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(255, 107, 53, 0.2);
+            transition: all 0.3s ease;
+            line-height: 1;
+            box-sizing: border-box;
         }
         .back-link:hover {
-            text-decoration: underline;
+            color: white;
+            background: linear-gradient(135deg, #ff6b35, #ff8c42);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(255, 107, 53, 0.4);
         }
         .back-link::before {
             content: "← ";
+        }
+        /* セクション区切り */
+        .policy-content > h2:not(:first-of-type) {
+            margin-top: 4rem;
+        }
+        /* 重要情報の強調 */
+        .highlight-box {
+            background: #fffbf0;
+            border: 2px solid #ffd700;
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+        /* スクロールバー */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ff6b35;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ff8c42;
         }
     </style>
 </head>
@@ -127,12 +237,12 @@
         <p>本アプリは以下の機能を提供します：</p>
 
         <ul>
-            <li><strong>ガチャシステム</strong>: 4段階レアリティ（N/R/SR/SSR）による料理抽選機能</li>
-            <li><strong>コレクション機能</strong>: 87種類の料理の収集・管理機能</li>
+            <li><strong>ガチャシステム</strong>: 複数レアリティによる料理抽選機能</li>
+            <li><strong>コレクション機能</strong>: 料理の収集・管理機能</li>
             <li><strong>レベルシステム</strong>: 料理獲得による経験値・レベルアップ機能</li>
-            <li><strong>実績システム</strong>: 18種類の実績達成・進捗管理機能</li>
-            <li><strong>ガチャチケット</strong>: 20分間隔での自動回復チケットシステム</li>
-            <li><strong>定食作成機能</strong>: 最大5つの料理による定食作成・共有機能</li>
+            <li><strong>実績システム</strong>: 実績達成・進捗管理機能</li>
+            <li><strong>ガチャチケット</strong>: 時間経過による自動回復チケットシステム</li>
+            <li><strong>定食作成機能</strong>: 複数の料理による定食作成・共有機能</li>
             <li><strong>SNS共有機能</strong>: ガチャ結果・定食の外部サービス共有機能</li>
         </ul>
 
@@ -140,7 +250,7 @@
         <p>本アプリでは以下の広告を表示します：</p>
         <ul>
             <li><strong>バナー広告</strong>: メイン画面下部への常時表示</li>
-            <li><strong>リワード広告</strong>: ユーザーの選択による視聴（30チケット獲得）</li>
+            <li><strong>リワード広告</strong>: ユーザーの選択による視聴でチケット獲得</li>
         </ul>
 
         <h2>4. 利用条件</h2>
@@ -173,13 +283,13 @@
         <h2>5. 知的財産権</h2>
 
         <h3>5.1 著作権</h3>
-        <p>本アプリに含まれる以下のコンテンツの著作権は当方に帰属します：</p>
+        <p>本アプリに含まれる以下のコンテンツの著作権は各権利者に帰属します：</p>
         <ul>
-            <li>料理画像（87種類）</li>
-            <li>効果音（8種類）</li>
-            <li>アニメーション・エフェクト</li>
-            <li>アプリのデザイン・UI</li>
-            <li>その他すべてのオリジナルコンテンツ</li>
+            <li>料理画像: <a href="https://sozaiya-san.jp/" target="_blank" rel="noopener">そざい屋さん</a>提供のフリー素材を使用</li>
+            <li>効果音: <a href="https://soundeffect-lab.info/" target="_blank" rel="noopener">効果音ラボ</a>提供のフリー素材を使用</li>
+            <li>アニメーション・エフェクト: 当方に帰属</li>
+            <li>アプリのデザイン・UI: 当方に帰属</li>
+            <li>その他のコンテンツ: それぞれの権利者に帰属</li>
         </ul>
 
         <h3>5.2 商標権</h3>
