@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="ごはんガチャ | 料理選びが楽しくなるガチャアプリ">
+    <meta name="description" content="今日何食べる？87種類の料理から運命の一品をガチャで決めよう！レアリティ付き料理コレクション、レベルアップ、実績システムで食事選びが楽しいゲームに。無料ダウンロード開始！">
+    <meta name="keywords" content="ごはんガチャ,料理 ガチャ アプリ,献立 決める アプリ,何食べたい,食べるもの 決まらない">
+    
+    <!-- OGP設定 -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="ごはんガチャ | 料理選びが楽しくなるガチャアプリ">
+    <meta property="og:description" content="今日何食べる？87種類の料理から運命の一品をガチャで決めよう！レアリティ付き料理コレクション、レベルアップ、実績システムで食事選びが楽しいゲームに。無料ダウンロード開始！">
+    <meta property="og:url" content="https://nyoromaru.com/app/gohan-gacha">
+    <meta property="og:site_name" content="ごはんガチャ">
+    <meta property="og:image" content="https://nyoromaru.com/app/gohan-gacha/og-image.jpg">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ごはんガチャ | 料理選びが楽しくなるガチャアプリ">
+    <meta name="twitter:description" content="今日何食べる？87種類の料理から運命の一品をガチャで決めよう！">
+    <meta name="twitter:image" content="https://nyoromaru.com/app/gohan-gacha/og-image.jpg">
+    
+    <title>ごはんガチャ | 料理選びが楽しくなるガチャアプリ</title>
+    <link rel="stylesheet" href="gohan-gacha.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Color+Emoji&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- ヘッダー・ナビゲーション -->
+    <header class="app-header">
+        <div class="container">
+            <nav class="breadcrumb">
+                <a href="../../">K-Works</a>
+                <span class="separator">›</span>
+                <a href="../">Apps</a>
+                <span class="separator">›</span>
+                <span>ごはんガチャ</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ヒーローセクション -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">今日何食べる？<br>迷ったらガチャで決めよう！</h1>
+                <p class="hero-subtitle">87種類の料理から運命の一品が決まる、新感覚グルメガチャアプリ</p>
+                <div class="hero-visual">
+                    <div class="gacha-animation">
+                        <div class="gacha-ball">🍚</div>
+                        <div class="sparkles">✨</div>
+                    </div>
+                </div>
+                <div class="hero-cta">
+                    <button class="btn-primary" onclick="scrollToDownload()">無料ダウンロード</button>
+                    <p class="cta-note">基本プレイ無料</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- アプリ紹介セクション -->
+    <section class="app-intro">
+        <div class="container">
+            <h2 class="section-title">ごはんガチャとは？</h2>
+            <div class="intro-grid">
+                <div class="intro-item">
+                    <div class="icon">🎮</div>
+                    <h3>料理のガチャシステム</h3>
+                    <p>料理のガチャシステムで今日のメニューを決める楽しいアプリ</p>
+                </div>
+                <div class="intro-item">
+                    <div class="icon">⭐</div>
+                    <h3>4段階のレアリティ</h3>
+                    <p>4段階のレアリティ（N/R/SR/SSR）で料理をコレクション</p>
+                </div>
+                <div class="intro-item">
+                    <div class="icon">🎯</div>
+                    <h3>ゲーミフィケーション</h3>
+                    <p>ゲーミフィケーション要素で食事選びが楽しい体験に</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 主要機能紹介 -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">3つの魅力</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎲</div>
+                    <h3>ワクワクガチャシステム</h3>
+                    <ul>
+                        <li>87種類の料理（和食・洋食・中華・エスニック）</li>
+                        <li>SSR確率5%の豪華エフェクト</li>
+                        <li>レアリティ別の特別演出</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎵</div>
+                    <h3>本格ゲーム体験</h3>
+                    <ul>
+                        <li>8種類の効果音</li>
+                        <li>爆発エフェクト・紙吹雪・スピードライン</li>
+                        <li>レベルアップ・実績システム</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🍱</div>
+                    <h3>お気に入り定食機能</h3>
+                    <ul>
+                        <li>最大5品で自分だけの定食を作成</li>
+                        <li>カロリー・パワー計算</li>
+                        <li>美しいカードでSNSシェア</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- スクリーンショット・ユーザーの声 -->
+    <section class="screenshots">
+        <div class="container">
+            <h2 class="section-title">アプリの様子</h2>
+            <div class="screenshot-grid">
+                <div class="screenshot-item">
+                    <div class="screenshot-placeholder">
+                        <div class="placeholder-icon">📱</div>
+                        <p>ガチャ演出画面<br>（SSRエフェクト）</p>
+                    </div>
+                </div>
+                <div class="screenshot-item">
+                    <div class="screenshot-placeholder">
+                        <div class="placeholder-icon">📚</div>
+                        <p>コレクション画面</p>
+                    </div>
+                </div>
+                <div class="screenshot-item">
+                    <div class="screenshot-placeholder">
+                        <div class="placeholder-icon">🍽️</div>
+                        <p>定食作成画面</p>
+                    </div>
+                </div>
+                <div class="screenshot-item">
+                    <div class="screenshot-placeholder">
+                        <div class="placeholder-icon">🏆</div>
+                        <p>実績・レベル画面</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ユーザーの声 -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">ユーザーの声</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">「毎日の献立決めが楽しくなった！」</p>
+                    <div class="testimonial-author">主婦 A さん</div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">「SSRが出た時の演出が本格的」</p>
+                    <div class="testimonial-author">会社員 B さん</div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">「料理のレベル上げにハマってます」</p>
+                    <div class="testimonial-author">学生 C さん</div>
+                </div>
+            </div>
+            
+            <div class="use-cases">
+                <h3>こんな時に使える</h3>
+                <div class="use-case-grid">
+                    <div class="use-case-item">
+                        <div class="use-case-icon">🍽️</div>
+                        <p>昼食・夕食選びに迷った時</p>
+                    </div>
+                    <div class="use-case-item">
+                        <div class="use-case-icon">🆕</div>
+                        <p>新しい料理に挑戦したい時</p>
+                    </div>
+                    <div class="use-case-item">
+                        <div class="use-case-icon">👨‍👩‍👧‍👦</div>
+                        <p>家族で何を食べるか決める時</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 無料・安心要素 -->
+    <section class="safety">
+        <div class="container">
+            <h2 class="section-title">無料・安心</h2>
+            <div class="safety-grid">
+                <div class="safety-item">
+                    <div class="safety-icon">💰</div>
+                    <h3>基本無料</h3>
+                    <p>課金要素なし</p>
+                </div>
+                <div class="safety-item">
+                    <div class="safety-icon">📺</div>
+                    <h3>広告</h3>
+                    <p>任意視聴でボーナスチケット獲得</p>
+                </div>
+                <div class="safety-item">
+                    <div class="safety-icon">🔒</div>
+                    <h3>プライバシー</h3>
+                    <p>個人情報収集なし</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ダウンロードセクション -->
+    <section class="download" id="download">
+        <div class="container">
+            <h2 class="section-title">今すぐダウンロード</h2>
+            <div class="download-info">
+                <div class="app-info">
+                    <div class="app-details">
+                        <p><strong>対応OS:</strong> Android・iOS（準備中）</p>
+                        <p><strong>容量:</strong> 約20MB</p>
+                        <p><strong>年齢制限:</strong> 全年齢対象</p>
+                    </div>
+                </div>
+                <div class="download-buttons">
+                    <button class="btn-download" onclick="downloadApp()">
+                        <span class="download-icon">📱</span>
+                        今すぐ無料ダウンロード
+                    </button>
+                    <p class="download-note">※現在準備中のため、Coming Soonページに遷移します</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <h3>ごはんガチャ</h3>
+                <p>料理選びが楽しくなるガチャアプリ</p>
+                <div class="footer-links">
+                    <a href="#" onclick="showComingSoon()">プライバシーポリシー</a>
+                    <a href="#" onclick="showComingSoon()">利用規約</a>
+                    <a href="#" onclick="showComingSoon()">お問い合わせ</a>
+                </div>
+                <p class="copyright">&copy; 2024 ごはんガチャ. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="gohan-gacha.js"></script>
+</body>
+</html>
