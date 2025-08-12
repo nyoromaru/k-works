@@ -1,4 +1,1 @@
-# ごはんガチャ - AdMob設定
-# このファイルはウェブサイトのルートディレクトリ（https://nyoromaru.com/app-ads.txt）に配置してください
-
 google.com, pub-6996265578478860, DIRECT, f08c47fec0942fa0
