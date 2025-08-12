@@ -523,6 +523,18 @@ body {
     width: auto;
 }
 
+/* Google Playバッジのサイズ調整 */
+.store-button.google-play img {
+    height: 80px; /* Google Playバッジは元々小さいので少し大きく */
+}
+
+/* App Storeバッジと高さを揃える */
+.store-button {
+    display: flex;
+    align-items: center;
+    height: 60px;
+}
+
 /* レスポンシブ対応 */
 @media (max-width: 768px) {
     .download-buttons {
@@ -533,6 +545,10 @@ body {
     
     .store-button img {
         height: 50px;
+    }
+    
+    .store-button.google-play img {
+        height: 70px;
     }
 }
 
