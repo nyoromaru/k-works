@@ -501,7 +501,39 @@ body {
 }
 
 .download-buttons {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.store-button {
+    display: inline-block;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.store-button:hover {
+    transform: translateY(-3px);
+    opacity: 0.9;
+}
+
+.store-button img {
+    height: 60px;
+    width: auto;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .download-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .store-button img {
+        height: 50px;
+    }
 }
 
 .btn-download {

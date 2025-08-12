@@ -5,15 +5,9 @@ function scrollToDownload() {
     });
 }
 
-// ダウンロードボタンクリック時の処理
+// ダウンロードボタンクリック時の処理（不要になったが互換性のために残す）
 function downloadApp() {
-    // 現在は準備中のため、Coming Soonページへリダイレクト
-    showComingSoon();
-}
-
-// Coming Soon表示機能
-function showComingSoon() {
-    alert('現在準備中です。もうしばらくお待ちください！\nアプリのリリースをお楽しみに！');
+    scrollToDownload();
 }
 
 // スクロール時のアニメーション
@@ -209,7 +203,7 @@ function setupFormValidation() {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             // バリデーションロジック
-            showComingSoon();
+            console.log('Form submitted');
         });
     });
 }
