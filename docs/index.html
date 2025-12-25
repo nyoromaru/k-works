@@ -12,17 +12,8 @@
 </head>
 <body>
     <main class="scroll-snap">
-        <div class="parallax-shapes" aria-hidden="true">
-            <svg class="shape shape-back" data-depth="0.12" viewBox="0 0 1440 360" preserveAspectRatio="none">
-                <path d="M0,220 C180,120 360,120 540,200 C720,280 900,300 1080,240 C1260,180 1350,120 1440,90 L1440,360 L0,360 Z"></path>
-            </svg>
-            <svg class="shape shape-mid" data-depth="0.2" viewBox="0 0 1440 360" preserveAspectRatio="none">
-                <path d="M0,260 C200,200 380,240 520,260 C700,290 860,280 1040,230 C1220,180 1360,190 1440,210 L1440,360 L0,360 Z"></path>
-            </svg>
-            <svg class="shape shape-front" data-depth="0.28" viewBox="0 0 1440 360" preserveAspectRatio="none">
-                <path d="M0,280 C220,240 420,260 620,300 C820,340 1000,320 1180,260 C1320,220 1400,240 1440,250 L1440,360 L0,360 Z"></path>
-            </svg>
-        </div>
+        <canvas class="wave-canvas wave-canvas-back" aria-hidden="true"></canvas>
+        <canvas class="wave-canvas wave-canvas-front" aria-hidden="true"></canvas>
         <section class="panel apps-panel">
             <div class="panel-card scene">
                 <div class="logo">K-Works</div>
@@ -67,29 +58,102 @@
                 </section>
             </div>
         </section>
-        <div class="parallax-foreground" aria-hidden="true">
-            <svg class="shape shape-overlay" data-depth="0.35" viewBox="0 0 1440 360" preserveAspectRatio="none">
-                <path d="M0,300 C220,260 420,280 620,320 C820,360 1000,340 1180,280 C1320,240 1400,250 1440,260 L1440,360 L0,360 Z"></path>
-            </svg>
-        </div>
     </main>
     <footer class="site-footer">
         <p>&copy; 2025 K-Works. All rights reserved.</p>
     </footer>
     <script>
+        const backCanvas = document.querySelector(".wave-canvas-back");
+        const frontCanvas = document.querySelector(".wave-canvas-front");
         const scroller = document.querySelector(".scroll-snap");
-        const shapes = Array.from(document.querySelectorAll(".parallax-shapes .shape"));
+        const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+        const backCtx = backCanvas.getContext("2d");
+        const frontCtx = frontCanvas.getContext("2d");
+        let rafId = null;
+        let width = 0;
+        let height = 0;
+        let dpr = 1;
 
-        const onScroll = () => {
-            const top = scroller.scrollTop;
-            shapes.forEach((shape) => {
-                const depth = parseFloat(shape.dataset.depth) || 0;
-                shape.style.transform = `translateY(${top * depth}px)`;
+        const backWaves = [
+            { amplitude: 26, length: 0.012, speed: 0.22, offset: 0.2, parallax: 0.04, color: "rgba(208, 217, 232, 0.5)" },
+            { amplitude: 36, length: 0.009, speed: 0.16, offset: 0.45, parallax: 0.06, color: "rgba(195, 208, 228, 0.55)" },
+            { amplitude: 46, length: 0.007, speed: 0.12, offset: 0.7, parallax: 0.08, color: "rgba(180, 196, 220, 0.6)" }
+        ];
+
+        const frontWaves = [
+            { amplitude: 18, length: 0.009, speed: 0.28, offset: 0.78, parallax: 0.12, color: "rgba(220, 231, 246, 0.75)" }
+        ];
+
+        const resize = () => {
+            dpr = Math.min(window.devicePixelRatio || 1, 2);
+            width = scroller.clientWidth;
+            height = scroller.clientHeight;
+            [backCanvas, frontCanvas].forEach((c) => {
+                c.width = width * dpr;
+                c.height = height * dpr;
+                c.style.width = `${width}px`;
+                c.style.height = `${height}px`;
             });
+            backCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            frontCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
         };
 
-        scroller.addEventListener("scroll", () => requestAnimationFrame(onScroll), { passive: true });
-        onScroll();
+        const drawWave = (ctx, time, wave, scrollOffset = 0) => {
+            ctx.beginPath();
+            const baseY = height * wave.offset - scrollOffset;
+            ctx.moveTo(0, height);
+            ctx.lineTo(0, baseY);
+            for (let x = 0; x <= width; x += 6) {
+                const phase = x * wave.length - time * wave.speed;
+                const wobble = Math.sin(phase * 0.45 + time * 0.25) * (wave.amplitude * 0.45);
+                const y = baseY + Math.sin(phase) * wave.amplitude + wobble;
+                ctx.lineTo(x, y);
+            }
+            ctx.lineTo(width, height);
+            ctx.closePath();
+            ctx.fillStyle = wave.color;
+            ctx.fill();
+        };
+
+        const render = (time) => {
+            const t = time * 0.001;
+            const scrollTop = scroller.scrollTop;
+            backCtx.clearRect(0, 0, width, height);
+            frontCtx.clearRect(0, 0, width, height);
+            backWaves.forEach((wave) => drawWave(backCtx, t, wave, scrollTop * wave.parallax));
+            frontWaves.forEach((wave) => drawWave(frontCtx, t, wave, scrollTop * wave.parallax));
+            rafId = requestAnimationFrame(render);
+        };
+
+        const start = () => {
+            if (rafId !== null) return;
+            rafId = requestAnimationFrame(render);
+        };
+
+        const stop = () => {
+            if (rafId === null) return;
+            cancelAnimationFrame(rafId);
+            rafId = null;
+        };
+
+        const onMotionChange = () => {
+            if (prefersReduced.matches) {
+                stop();
+                backCtx.clearRect(0, 0, width, height);
+                frontCtx.clearRect(0, 0, width, height);
+            } else {
+                start();
+            }
+        };
+
+        resize();
+        window.addEventListener("resize", resize, { passive: true });
+        document.addEventListener("visibilitychange", () => {
+            if (document.hidden) stop();
+            else onMotionChange();
+        });
+        prefersReduced.addEventListener("change", onMotionChange);
+        onMotionChange();
     </script>
 </body>
 </html>
