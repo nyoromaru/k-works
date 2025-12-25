@@ -6,18 +6,20 @@
 
 :root {
     --ink: #2a354d;
-    --ink-muted: #9dabc0;
-    --base: #f1f3f6;
-    --card: #f1f3f6;
-    --shadow-dark: rgba(55, 84, 170, 0.15);
-    --shadow-light: rgba(255, 255, 255, 1);
+    --ink-muted: #98a6be;
+    --base: #e9edf3;
+    --card: #f0f4f9;
+    --shadow-dark: rgba(120, 130, 150, 0.28);
+    --shadow-light: rgba(255, 255, 255, 0.85);
     --radius-xl: 42px;
     --radius-lg: 32px;
 }
 
 body {
     font-family: "Poppins", sans-serif;
-    background-color: var(--base);
+    background: radial-gradient(circle at 15% 12%, #f7f9fc 0%, transparent 60%),
+        radial-gradient(circle at 85% 18%, #dfe7f5 0%, transparent 55%),
+        var(--base);
     color: var(--ink);
     min-height: 100vh;
 }
@@ -45,17 +47,40 @@ body {
 }
 
 .panel-card {
-    background: var(--card);
+    background: linear-gradient(135deg, #f7f9fc 0%, #e7edf5 100%);
     border-radius: var(--radius-xl);
     padding: 48px 56px;
     box-shadow:
-        inset 0 0 15px rgba(55, 84, 170, 0),
-        inset 0 0 20px rgba(255, 255, 255, 0),
-        7px 7px 15px rgba(55, 84, 170, 0.15),
-        -7px -7px 20px rgba(255, 255, 255, 1),
-        inset 0 0 4px rgba(255, 255, 255, 0.2);
+        20px 20px 30px rgba(130, 145, 170, 0.2),
+        -18px -18px 28px rgba(255, 255, 255, 0.9);
     width: min(1120px, 92vw);
     margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.panel-card::before,
+.panel-card::after {
+    content: "";
+    position: absolute;
+    border-radius: 999px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
+    opacity: 0.75;
+    pointer-events: none;
+}
+
+.panel-card::before {
+    width: 220px;
+    height: 220px;
+    top: -80px;
+    right: -60px;
+}
+
+.panel-card::after {
+    width: 160px;
+    height: 160px;
+    bottom: -60px;
+    left: -50px;
 }
 
 .logo {
@@ -84,16 +109,40 @@ body {
     aspect-ratio: 1 / 1;
     min-height: 260px;
     border-radius: var(--radius-lg);
-    background: var(--card);
+    background: linear-gradient(145deg, #f7f9fc 0%, #e6ecf5 100%);
     box-shadow:
-        inset 0 0 15px rgba(55, 84, 170, 0),
-        inset 0 0 20px rgba(255, 255, 255, 0),
-        7px 7px 15px rgba(55, 84, 170, 0.15),
-        -7px -7px 20px rgba(255, 255, 255, 1),
-        inset 0 0 4px rgba(255, 255, 255, 0.2);
+        14px 14px 22px rgba(130, 145, 170, 0.22),
+        -12px -12px 20px rgba(255, 255, 255, 0.9);
     overflow: hidden;
     text-decoration: none;
     transition: box-shadow 0.3s ease;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    top: -40%;
+    left: -10%;
+    width: 140%;
+    height: 70%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0));
+    opacity: 0.65;
+    transform: rotate(-8deg);
+    pointer-events: none;
+}
+
+.card::after {
+    content: "";
+    position: absolute;
+    top: 8%;
+    left: 10%;
+    width: 70%;
+    height: 40%;
+    border-radius: 32px;
+    background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
+    opacity: 0.55;
+    pointer-events: none;
+    mix-blend-mode: screen;
 }
 
 .card-content {
@@ -113,17 +162,16 @@ body {
 }
 
 .card-title {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 600;
-    letter-spacing: 0.06em;
     text-transform: none;
-    color: var(--ink-muted);
-    padding: 8px 18px;
-    border-radius: 999px;
-    background: var(--card);
-    box-shadow:
-        inset 4px 4px 8px rgba(55, 84, 170, 0.12),
-        inset -4px -4px 8px rgba(255, 255, 255, 1);
+    letter-spacing: 0.12em;
+    font-variation-settings: "wght" 600;
+    color: rgba(120, 132, 158, 0.7);
+    padding: 6px 10px;
+    border-radius: 12px;
+    background: transparent;
+    box-shadow: none;
 }
 
 .app-logo {
@@ -139,9 +187,8 @@ body {
 
 .card:hover {
     box-shadow:
-        inset 7px 7px 15px rgba(55, 84, 170, 0.15),
-        inset -7px -7px 20px rgba(255, 255, 255, 1),
-        0 0 4px rgba(255, 255, 255, 0.2);
+        inset 10px 10px 18px rgba(120, 135, 160, 0.28),
+        inset -10px -10px 18px rgba(255, 255, 255, 0.9);
 }
 
 .info-block {
