@@ -12,6 +12,17 @@
 </head>
 <body>
     <main class="scroll-snap">
+        <div class="parallax-shapes" aria-hidden="true">
+            <svg class="shape shape-back" data-depth="0.12" viewBox="0 0 1440 360" preserveAspectRatio="none">
+                <path d="M0,220 C180,120 360,120 540,200 C720,280 900,300 1080,240 C1260,180 1350,120 1440,90 L1440,360 L0,360 Z"></path>
+            </svg>
+            <svg class="shape shape-mid" data-depth="0.2" viewBox="0 0 1440 360" preserveAspectRatio="none">
+                <path d="M0,260 C200,200 380,240 520,260 C700,290 860,280 1040,230 C1220,180 1360,190 1440,210 L1440,360 L0,360 Z"></path>
+            </svg>
+            <svg class="shape shape-front" data-depth="0.28" viewBox="0 0 1440 360" preserveAspectRatio="none">
+                <path d="M0,280 C220,240 420,260 620,300 C820,340 1000,320 1180,260 C1320,220 1400,240 1440,250 L1440,360 L0,360 Z"></path>
+            </svg>
+        </div>
         <section class="panel apps-panel">
             <div class="panel-card scene">
                 <div class="logo">K-Works</div>
@@ -56,9 +67,29 @@
                 </section>
             </div>
         </section>
+        <div class="parallax-foreground" aria-hidden="true">
+            <svg class="shape shape-overlay" data-depth="0.35" viewBox="0 0 1440 360" preserveAspectRatio="none">
+                <path d="M0,300 C220,260 420,280 620,320 C820,360 1000,340 1180,280 C1320,240 1400,250 1440,260 L1440,360 L0,360 Z"></path>
+            </svg>
+        </div>
     </main>
     <footer class="site-footer">
         <p>&copy; 2025 K-Works. All rights reserved.</p>
     </footer>
+    <script>
+        const scroller = document.querySelector(".scroll-snap");
+        const shapes = Array.from(document.querySelectorAll(".parallax-shapes .shape"));
+
+        const onScroll = () => {
+            const top = scroller.scrollTop;
+            shapes.forEach((shape) => {
+                const depth = parseFloat(shape.dataset.depth) || 0;
+                shape.style.transform = `translateY(${top * depth}px)`;
+            });
+        };
+
+        scroller.addEventListener("scroll", () => requestAnimationFrame(onScroll), { passive: true });
+        onScroll();
+    </script>
 </body>
 </html>

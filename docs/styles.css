@@ -28,6 +28,8 @@ body {
     height: 100vh;
     overflow-y: auto;
     scroll-snap-type: y mandatory;
+    position: relative;
+    isolation: isolate;
 }
 
 .panel {
@@ -36,6 +38,56 @@ body {
     place-items: center;
     scroll-snap-align: start;
     padding: 80px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.parallax-shapes {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.shape {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    fill: rgba(210, 220, 236, 0.7);
+    opacity: 0.8;
+}
+
+.shape-back {
+    bottom: 0;
+    fill: rgba(206, 216, 232, 0.6);
+}
+
+.shape-mid {
+    bottom: 0;
+    fill: rgba(196, 208, 226, 0.7);
+}
+
+.shape-front {
+    bottom: 0;
+    fill: rgba(185, 200, 222, 0.75);
+}
+
+.parallax-foreground {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.shape-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    fill: rgba(180, 195, 218, 0.5);
+    opacity: 0.5;
 }
 
 .scene {
@@ -121,28 +173,20 @@ body {
 .card::before {
     content: "";
     position: absolute;
-    top: -40%;
-    left: -10%;
-    width: 140%;
-    height: 70%;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0));
-    opacity: 0.65;
-    transform: rotate(-8deg);
+    inset: 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 42%);
+    opacity: 0.5;
     pointer-events: none;
 }
 
 .card::after {
     content: "";
     position: absolute;
-    top: 8%;
-    left: 10%;
-    width: 70%;
-    height: 40%;
-    border-radius: 32px;
-    background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
-    opacity: 0.55;
+    inset: 8px;
+    border-radius: calc(var(--radius-lg) - 8px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    opacity: 0.4;
     pointer-events: none;
-    mix-blend-mode: screen;
 }
 
 .card-content {
