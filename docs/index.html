@@ -8,55 +8,57 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Color+Emoji&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <main>
-        <section class="hero">
-            <div class="container">
-                <h1>K-Works</h1>
-                <p class="tagline">Creating Digital Experiences</p>
-            </div>
-        </section>
-
-        <section class="about">
-            <div class="container">
-                <h2>About</h2>
-                <p class="lead">iOS・Androidアプリケーション開発</p>
-                <p>最新のテクノロジーとクリエイティブな発想で、日常をより豊かにするプロダクトを創造します。</p>
-            </div>
-        </section>
-
-        <section class="apps">
-            <div class="container">
-                <h2>Apps</h2>
-                <p>私たちが開発したアプリケーションをご紹介します。</p>
-                <div class="app-grid">
-                    <div class="app-card">
-                        <div class="app-icon">🍚</div>
-                        <h3>ごはんガチャ</h3>
-                        <p>料理選びが楽しくなるガチャアプリ。たくさんの料理から運命の一品を決めよう！</p>
-                        <a href="app/gohan-gacha/" class="app-link">詳細を見る</a>
+    <main class="scroll-snap">
+        <section class="panel apps-panel">
+            <div class="panel-card scene">
+                <div class="logo">K-Works</div>
+                <div class="apps-grid">
+                    <div class="app-tile">
+                        <a class="card day app-card" href="https://emofleets.com">
+                            <div class="card-content">
+                                <div class="app-icon-wrap">
+                                    <img class="app-logo" src="assets/emofleets-logo.svg" alt="Emofleets logo">
+                                </div>
+                            </div>
+                        </a>
+                        <p class="card-title">Emofleets</p>
+                    </div>
+                    <div class="app-tile">
+                        <a class="card day app-card" href="https://nyoromaru.com/app/gohan-gacha">
+                            <div class="card-content">
+                                <div class="app-icon-wrap">
+                                    <div class="app-emoji" aria-hidden="true">🍚</div>
+                                </div>
+                            </div>
+                        </a>
+                        <p class="card-title">ごはんガチャ</p>
                     </div>
                 </div>
-                <div class="apps-more">
-                    <a href="app/" class="btn-apps">すべてのアプリを見る</a>
-                </div>
             </div>
         </section>
-
-        <section class="contact">
-            <div class="container">
-                <h2>Contact</h2>
-                <p>Email: nyoromaru.works@gmail.com</p>
+        <section class="panel info-panel">
+            <div class="panel-card scene">
+                <section class="info-block">
+                    <p class="info-label">About</p>
+                    <p class="info-sub">iOS・Androidアプリケーション開発</p>
+                    <p class="info-text">最新のテクノロジーとクリエイティブな発想で、日常をより豊かにするプロダクトを創造します。</p>
+                </section>
+            </div>
+        </section>
+        <section class="panel info-panel">
+            <div class="scene">
+                <section class="info-block">
+                    <p class="info-label">Contact</p>
+                    <p class="info-text">nyoromaru.works@gmail.com</p>
+                </section>
             </div>
         </section>
     </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 K-Works. All rights reserved.</p>
-        </div>
+    <footer class="site-footer">
+        <p>&copy; 2025 K-Works. All rights reserved.</p>
     </footer>
 </body>
 </html>
