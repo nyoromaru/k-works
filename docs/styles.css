@@ -316,6 +316,33 @@ body {
     text-shadow: none;
 }
 
+.reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 1.8s ease, transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-delay-1 {
+    transition-delay: 0.6s;
+}
+
+.reveal-delay-2 {
+    transition-delay: 0.45s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+
 @media (max-width: 768px) {
     .apps-grid {
         grid-template-columns: 1fr;
