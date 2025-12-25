@@ -118,11 +118,10 @@
 
         const render = (time) => {
             const t = time * 0.001;
-            const scrollTop = scroller.scrollTop;
             backCtx.clearRect(0, 0, width, height);
             frontCtx.clearRect(0, 0, width, height);
-            backWaves.forEach((wave) => drawWave(backCtx, t, wave, scrollTop * wave.parallax));
-            frontWaves.forEach((wave) => drawWave(frontCtx, t, wave, scrollTop * wave.parallax));
+            backWaves.forEach((wave) => drawWave(backCtx, t, wave, 0));
+            frontWaves.forEach((wave) => drawWave(frontCtx, t, wave, 0));
             rafId = requestAnimationFrame(render);
         };
 
